@@ -1,6 +1,10 @@
 class MessagesController < ApplicationController
   SYSTEM_PROMPT = "You are a Teaching Assistant.\n\nI am a student at the Le Wagon Web Development Bootcamp, learning how to code.\n\nHelp me break down my problem into small, actionable steps, without giving away solutions.\n\nAnswer concisely in markdown."
 
+  def index
+    @challenge = Challenge.find(params[:challenge_id])
+    @messages = @challenge.messages
+  end
   def new
     @challenge = Challenge.find(params[:challenge_id])
     @message = Message.new
